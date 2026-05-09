@@ -1,0 +1,36 @@
+[
+  {
+    "config_idx": 0,
+    "config_path": "configs/pipeline_b/config_0.json",
+    "task_id": "83d10b06-26d1-4636-a32c-23f92c57f30b",
+    "occupation": "Accountants and Auditors",
+    "sector": "Professional, Scientific, and Technical Services",
+    "file_type": "xlsx",
+    "variant_idx": 0,
+    "diversity_spec": {
+      "data_structure": "single flat table — all data in one sheet, each row is an independent record",
+      "computation": "raw data only — no formulas; model must compute everything from scratch",
+      "time_dimension": "no time dimension — static snapshot, no periods",
+      "domain": "financial risk and compliance metrics (KRIs, VaR, regulatory breach counts)"
+    },
+    "pool_c_file": "data/pool_c/83d10b06_xlsx_v0.xlsx",
+    "output_folder": "task_gen_0"
+  },
+  {
+    "config_idx": 1,
+    "config_path": "configs/pipeline_b/config_1.json",
+    "task_id": "83d10b06-26d1-4636-a32c-23f92c57f30b",
+    "occupation": "Accountants and Auditors",
+    "sector": "Professional, Scientific, and Technical Services",
+    "file_type": "xlsx",
+    "variant_idx": 1,
+    "diversity_spec": {
+      "data_structure": "hierarchical columns — parent/child groupings in columns (e.g. Division > Sub-Division > Entity), rows represent leaf-level records",
+      "computation": "multi-step derived columns — intermediate computed columns that feed into final summary columns",
+      "time_dimension": "rolling or cumulative — requires understanding window logic (e.g. trailing 3-month average)",
+      "domain": "sales and revenue performance (pipeline, bookings, revenue by product/region)"
+    },
+    "pool_c_file": "data/pool_c/83d10b06_xlsx_v1.xlsx",
+    "output_folder": "task_gen_1"
+  }
+]

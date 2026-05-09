@@ -1,0 +1,20 @@
+{
+  "query": "You are creating a synthetic reference file for AI training data.\n\nThe original file `Raw Data for Branch Profitability Final.xlsx` is in the `reference_files/` folder.\nRead it carefully to understand its structure, column layout, data types, and conventions.\n\nYour job is to create a NEW XLSX file with a different scenario but the same structural pattern. Follow ALL of these constraints exactly:\n\nYOU MUST generate a file that satisfies ALL of the following constraints:\n  • DATA STRUCTURE: hierarchical columns — parent/child groupings in columns (e.g. Division > Sub-Division > Entity), rows represent leaf-level records\n  • COMPUTATION: multi-step derived columns — intermediate computed columns that feed into final summary columns\n  • TIME DIMENSION: rolling or cumulative — requires understanding window logic (e.g. trailing 3-month average)\n  • DOMAIN: sales and revenue performance (pipeline, bookings, revenue by product/region)\n\nDo not ignore any constraint above. If a constraint conflicts with a superficially 'simpler' approach, follow the constraint.\n\nINSTRUCTIONS:\n1. Open and examine `reference_files/Raw Data for Branch Profitability Final.xlsx`\n2. Create a new XLSX file that:\n   - Follows the same structural pattern as the original (same number of sheets / same table layout / same document genre)\n   - Adapts content and column semantics to the DOMAIN constraint above\n   - Implements the DATA STRUCTURE, COMPUTATION, and TIME DIMENSION constraints\n   - Uses completely fictional entity names (companies, people, organisations, places)\n   - Has realistic numeric values appropriate for the specified domain\n3. Save the file as `Raw_Data_for_Branch_Profitability_Final_v19.xlsx` in the current workspace directory\n\nRULES:\n- Do NOT copy any actual data values, company names, or metric names from the original file\n- All content must be internally consistent and realistic\n- The output must be a valid, well-formed XLSX file\n- If the original has multiple sheets, create the same number of sheets with matching purposes\n",
+  "resource_dir": [
+    "obs://bucket-pangu-green-guiyang/qianmin/opensource_dataset/gdpval/reference_files/52dfa090145b2077b0434571f616f4b1/Raw Data for Branch Profitability Final.xlsx"
+  ],
+  "output": "synth_file_1819",
+  "skill_dir": [
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/spreadsheet",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/pdf",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/doc-coauthoring",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/xlsx",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/docx",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/internal-comms",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/pptx",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/csv-data-summarizer",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/pdf-processing-pro",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/markitdown",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/markdown-formatter"
+  ]
+}

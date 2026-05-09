@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+
+# Downloaded original reference files (regenerable via HuggingFace)
+data/ref_cache/
+
+# Synthesized binary files in Pool C (large, regenerable via pipeline)
+data/pool_c/*.xlsx
+data/pool_c/*.docx
+data/pool_c/*.pdf
+
+# Sample outputs
+data/samples/
+
+# Local env
+.env

@@ -1,0 +1,468 @@
+[
+  {
+    "original_task_id": "83d10b06-26d1-4636-a32c-23f92c57f30b",
+    "occupation": "Accountants and Auditors",
+    "sector": "Professional, Scientific, and Technical Services",
+    "pool_c_file": "data/pool_c/83d10b06_xlsx_v0.xlsx",
+    "file_type": "xlsx",
+    "variant_idx": 0,
+    "prompt": "You are a senior auditor at a professional services firm engaged to perform a substantive audit of Key Risk Indicator (KRI) data reported by Meridian Group for Q3 2024. You have been provided with the source data file **83d10b06_xlsx_v0.xlsx**, which contains a single worksheet named **KRI_Report**. This worksheet holds **1,517 KRI records** (data rows, excluding the header row) across the firm's divisions \u2014 including Transaction Services, Risk Advisory, and Assurance & Audit \u2014 covering legal entities in countries such as the Philippines, Malaysia, Vietnam, and Hong Kong. Each record contains the following eight columns in order: **No**, **Division**, **Sub-Division**, **Country**, **Legal Entity**, **KRIs**, **Q3 2024 KRI**, and **Q2 2024 KRI**.\n\nYour engagement manager has defined the following audit sampling parameters:\n- **Confidence Level:** 90%\n- **Tolerable Error Rate (e):** 10%\n- **Expected Error Rate (p):** 0.50 (conservative assumption)\n- **Sampling Method:** Attribute sampling with finite population correction (FPC)\n\nYou are required to prepare an audit sampling workbook that documents your statistical sampling methodology and presents the selected sample records for detailed KRI testing.\n\n**Deliverable: Create an Excel workbook named `Sample.xlsx` with the following three worksheets:**\n\n**Worksheet 1 \u2014 Sample Data (must be the first sheet in the workbook):**\nThis sheet must contain the KRI records selected for audit testing. Begin with a header row using the exact same 8 column labels as the KRI_Report source data (No, Division, Sub-Division, Country, Legal Entity, KRIs, Q3 2024 KRI, Q2 2024 KRI), followed by the sampled data rows copied verbatim from the KRI_Report population.\n\n**Worksheet 2 \u2014 KRI_Report:**\nInclude the complete population data in a worksheet named **KRI_Report**. This sheet must contain the original header row plus all 1,517 data rows with all 8 columns preserved in their original order.\n\n**Worksheet 3 \u2014 Sample Size Calculation:**\nName this worksheet exactly **Sample Size Calculation**. Document the following statistical methodology clearly and traceably:\n- The specified confidence level (**90%**) and tolerable error rate (**10%**)\n- The population size **N** (equal to the count of data rows in KRI_Report, excluding the header)\n- The z-score for 90% confidence: **z = 1.645**\n- The conservative expected error rate: **p = 0.50**\n- The initial (pre-correction) sample size **n\u2080** using the formula: n\u2080 = (z\u00b2 \u00d7 p \u00d7 (1 \u2212 p)) / e\u00b2\n- The finite population correction yielding adjusted sample size: n = n\u2080 / (1 + (n\u2080 \u2212 1) / N)\n- The final required sample size **R** reported as an integer (ceiling of n)\n- The sampling selection method (e.g., random sampling) used to choose the R records\n\nEvery row in the first worksheet must correspond to an actual record from the KRI_Report data \u2014 no fabricated or altered entries are permitted.",
+    "rubric_pretty": "[+2] The submitted deliverable is an Excel workbook whose file basename is 'Sample' (accept .xlsx, .xls, or .xlsm).\n\n[+2] The workbook contains a worksheet named exactly 'Sample Size Calculation' (case-insensitive, ignoring surrounding spaces).\n\n[+2] The 'Sample Size Calculation' worksheet explicitly states a confidence level of 90% and a tolerable error rate of 10%.\n\n[+2] The 'Sample Size Calculation' worksheet shows the population size N and N equals 1517 (the number of data rows in KRI_Report, excluding the header row).\n\n[+2] The 'Sample Size Calculation' worksheet shows the initial (pre-FPC) sample size n\u2080 computed as (z\u00b2 \u00d7 p \u00d7 (1\u2212p)) / e\u00b2 = (1.645\u00b2 \u00d7 0.5 \u00d7 0.5) / 0.10\u00b2, yielding n\u2080 \u2248 67.65.\n\n[+2] The 'Sample Size Calculation' worksheet applies finite population correction n = n\u2080 / (1 + (n\u2080 \u2212 1) / N) with z = 1.645, p = 0.5, e = 0.10, N = 1517, and reports the final required sample size R = 65 as an integer (ceiling of n \u2248 64.81).\n\n[+2] The first worksheet in the workbook contains a header row whose 8 column labels match exactly the KRI_Report headers: No, Division, Sub-Division, Country, Legal Entity, KRIs, Q3 2024 KRI, Q2 2024 KRI (same order, identical text).\n\n[+2] The first worksheet contains exactly 65 data rows (excluding the header row), matching the required sample size R = 65.\n\n[+2] All 65 data rows in the first worksheet are unique \u2014 no record appears more than once.\n\n[+2] All 65 data rows in the first worksheet correspond to actual records present verbatim in the KRI_Report data (no fabricated, altered, or hallucinated rows).\n\n[+2] The workbook contains a worksheet named 'KRI_Report' with exactly 1517 data rows (excluding the header) and the original 8 columns preserved in order.\n\n[+2] The 'Sample Size Calculation' worksheet documents the sampling selection method used to draw the R records from the population (e.g., random sampling with a stated seed, or systematic interval sampling).",
+    "rubric_json": [
+      {
+        "score": 2,
+        "criterion": "The submitted deliverable is an Excel workbook whose file basename is 'Sample' (accept .xlsx, .xls, or .xlsm).",
+        "rubric_item_id": "syn-0-1"
+      },
+      {
+        "score": 2,
+        "criterion": "The workbook contains a worksheet named exactly 'Sample Size Calculation' (case-insensitive, ignoring surrounding spaces).",
+        "rubric_item_id": "syn-0-2"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet explicitly states a confidence level of 90% and a tolerable error rate of 10%.",
+        "rubric_item_id": "syn-0-3"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet shows the population size N and N equals 1517 (the number of data rows in KRI_Report, excluding the header row).",
+        "rubric_item_id": "syn-0-4"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet shows the initial (pre-FPC) sample size n\u2080 computed as (z\u00b2 \u00d7 p \u00d7 (1\u2212p)) / e\u00b2 = (1.645\u00b2 \u00d7 0.5 \u00d7 0.5) / 0.10\u00b2, yielding n\u2080 \u2248 67.65.",
+        "rubric_item_id": "syn-0-5"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet applies finite population correction n = n\u2080 / (1 + (n\u2080 \u2212 1) / N) with z = 1.645, p = 0.5, e = 0.10, N = 1517, and reports the final required sample size R = 65 as an integer (ceiling of n \u2248 64.81).",
+        "rubric_item_id": "syn-0-6"
+      },
+      {
+        "score": 2,
+        "criterion": "The first worksheet in the workbook contains a header row whose 8 column labels match exactly the KRI_Report headers: No, Division, Sub-Division, Country, Legal Entity, KRIs, Q3 2024 KRI, Q2 2024 KRI (same order, identical text).",
+        "rubric_item_id": "syn-0-7"
+      },
+      {
+        "score": 2,
+        "criterion": "The first worksheet contains exactly 65 data rows (excluding the header row), matching the required sample size R = 65.",
+        "rubric_item_id": "syn-0-8"
+      },
+      {
+        "score": 2,
+        "criterion": "All 65 data rows in the first worksheet are unique \u2014 no record appears more than once.",
+        "rubric_item_id": "syn-0-9"
+      },
+      {
+        "score": 2,
+        "criterion": "All 65 data rows in the first worksheet correspond to actual records present verbatim in the KRI_Report data (no fabricated, altered, or hallucinated rows).",
+        "rubric_item_id": "syn-0-10"
+      },
+      {
+        "score": 2,
+        "criterion": "The workbook contains a worksheet named 'KRI_Report' with exactly 1517 data rows (excluding the header) and the original 8 columns (No, Division, Sub-Division, Country, Legal Entity, KRIs, Q3 2024 KRI, Q2 2024 KRI) preserved in order.",
+        "rubric_item_id": "syn-0-11"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet documents the sampling selection method used to draw the R records from the population (e.g., random sampling with a stated seed, or systematic interval sampling).",
+        "rubric_item_id": "syn-0-12"
+      }
+    ],
+    "deliverable_files": [
+      "Sample.xlsx"
+    ],
+    "task_summary": "As an auditor, prepare an Excel workbook (Sample.xlsx) that documents attribute sampling methodology (90% confidence, 10% tolerable error, FPC-adjusted sample size R=65) applied to a 1,517-record KRI_Report dataset and presents the 65 selected KRI records for substantive audit testing."
+  },
+  {
+    "original_task_id": "24d1e93f-9018-45d4-b522-ad89dfd78079",
+    "occupation": "Buyers and Purchasing Agents",
+    "sector": "Manufacturing",
+    "pool_c_file": "data/pool_c/24d1e93f_docx_v0.docx",
+    "file_type": "docx",
+    "variant_idx": 0,
+    "prompt": "You are the category buyer for hydraulic valve assemblies at a mid-size industrial equipment manufacturer. Your procurement manager has launched a supplier selection process for a 3-year production program, and following a competitive RFQ, three vendors have been shortlisted: **Fabricadora S\u00e3o Paulo**, **Metal\u00fargica Curitiba**, and a third vendor referred to internally as the **Comparison Vendor**, which offers annual volume-tier pricing.\n\nYour task is to build a structured financial analysis in Microsoft Excel that evaluates the total procurement cost for each vendor over the 3-year program and compares them on a Net Present Value (NPV) basis to support a defensible sourcing recommendation for leadership.\n\n---\n\n**Vendor Pricing Data**\n\n*Fabricadora S\u00e3o Paulo \u2014 Top Variant:*\n- Part price: BRL 12,450.00 per unit\n- Raw material cost component: BRL 6,200.00\n- Machining and assembly component: BRL 3,150.00\n- Tooling amortization component: BRL 1,600.00\n*(The cost components are informational breakdowns. Use BRL 12,450.00 as the unit price in all procurement cost calculations.)*\n\n*Metal\u00fargica Curitiba \u2014 Top Variant:*\n- Part price: BRL 9,830.00 per unit\n- Raw material cost component: BRL 4,900.00\n- Machining and assembly component: BRL 2,750.00\n- Tooling amortization component: BRL 1,080.00\n*(The cost components are informational breakdowns. Use BRL 9,830.00 as the unit price in all procurement cost calculations.)*\n\n*Comparison Vendor \u2014 Annual Volume-Tier Pricing:*\n\n| Annual Volume (units) | Unit Price (BRL) |\n|-----------------------|------------------|\n| < 500                 | 11,200.00        |\n| ~10,000               | 12,950.00        |\n| ~20,000               | 12,100.00        |\n| \u2265 30,000              | 11,500.00        |\n\nFor the Comparison Vendor, determine the applicable tier based on the projected annual volume. Since all three program years project volumes well above 30,000 units, apply BRL 11,500.00 per unit for all years.\n\n---\n\n**Annual Volume Projections**\n\n| Year   | Fabricadora S\u00e3o Paulo | Metal\u00fargica Curitiba | Comparison Vendor |\n|--------|----------------------|----------------------|-------------------|\n| Year 1 | 46,000               | 43,500               | 46,000            |\n| Year 2 | 54,000               | 51,000               | 54,000            |\n| Year 3 | 63,000               | 59,500               | 63,000            |\n\n*(The Comparison Vendor uses the same volume projections as Fabricadora S\u00e3o Paulo.)*\n\n---\n\n**NPV Analysis Assumptions**\n- Discount rate: 12% per annum\n- Payment timing: end-of-year for Years 1, 2, and 3\n- Cost basis: annual procurement spend = unit price \u00d7 annual volume (no additional charges or tooling fees)\n- NPV represents the present value of total procurement outflows; a lower NPV indicates a lower-cost vendor\n\n---\n\n**Deliverable Requirements**\n\nCreate a Microsoft Excel workbook (.xlsx) containing the following five sheets:\n\n1. **Fabricadora NPV** \u2014 Year-by-year volume, unit price, annual procurement spend, present value per year, and total NPV for Fabricadora S\u00e3o Paulo\n2. **Metal\u00fargica NPV** \u2014 Same structure for Metal\u00fargica Curitiba\n3. **Comparison NPV** \u2014 Same structure for Comparison Vendor\n4. **Summary** \u2014 Side-by-side comparison of all three vendors showing annual procurement spend for each year, total 3-year spend, and NPV; clearly identify which vendor has the lowest NPV\n5. **Assumptions** \u2014 Documented list of all assumptions used: discount rate, payment timing convention, volume tier selection rationale for the Comparison Vendor, and the cost basis\n\nAll monetary figures must be denominated in BRL.",
+    "rubric_pretty": "[+2] Delivers the output as a single Microsoft Excel workbook in .xlsx format\n[+2] Workbook contains a dedicated NPV calculation sheet for Fabricadora S\u00e3o Paulo\n[+2] Workbook contains a dedicated NPV calculation sheet for Metal\u00fargica Curitiba\n[+2] Workbook contains a dedicated NPV calculation sheet for Comparison Vendor\n[+2] Workbook includes a summary sheet comparing all three vendors side-by-side\n[+2] An Assumptions sheet is present and documents the discount rate (12%), end-of-year payment timing, and the rationale for applying the \u226530,000-unit tier price to the Comparison Vendor\n[+2] Annual volumes for Fabricadora S\u00e3o Paulo are correctly entered as 46,000 / 54,000 / 63,000 for Years 1, 2, and 3 respectively\n[+2] Annual volumes for Metal\u00fargica Curitiba are correctly entered as 43,500 / 51,000 / 59,500 for Years 1, 2, and 3 respectively\n[+2] Correct unit prices are applied per vendor: BRL 12,450.00 for Fabricadora S\u00e3o Paulo, BRL 9,830.00 for Metal\u00fargica Curitiba, and BRL 11,500.00 for Comparison Vendor\n[+2] Annual procurement spend is correctly calculated as volume \u00d7 unit price for all three vendors and all three years (e.g., Fabricadora Year 1: BRL 572,700,000; Metal\u00fargica Year 1: BRL 427,605,000; Comparison Year 1: BRL 529,000,000)\n[+2] NPV is correctly calculated for each vendor using a 12% annual discount rate and end-of-year timing (Fabricadora \u2248 BRL 1,605,577,000; Metal\u00fargica \u2248 BRL 1,197,756,000; Comparison \u2248 BRL 1,483,064,000; values within \u00b11% tolerance)\n[+2] The summary sheet correctly identifies Metal\u00fargica Curitiba as the vendor with the lowest NPV",
+    "rubric_json": [
+      {
+        "score": 2,
+        "criterion": "Delivers the output as a single Microsoft Excel workbook in .xlsx format",
+        "rubric_item_id": "syn-0-1"
+      },
+      {
+        "score": 2,
+        "criterion": "Workbook contains a dedicated NPV calculation sheet for Fabricadora S\u00e3o Paulo",
+        "rubric_item_id": "syn-0-2"
+      },
+      {
+        "score": 2,
+        "criterion": "Workbook contains a dedicated NPV calculation sheet for Metal\u00fargica Curitiba",
+        "rubric_item_id": "syn-0-3"
+      },
+      {
+        "score": 2,
+        "criterion": "Workbook contains a dedicated NPV calculation sheet for Comparison Vendor",
+        "rubric_item_id": "syn-0-4"
+      },
+      {
+        "score": 2,
+        "criterion": "Workbook includes a summary sheet comparing all three vendors side-by-side",
+        "rubric_item_id": "syn-0-5"
+      },
+      {
+        "score": 2,
+        "criterion": "An Assumptions sheet is present and documents the discount rate (12%), end-of-year payment timing, and the rationale for applying the \u226530,000-unit tier price to the Comparison Vendor",
+        "rubric_item_id": "syn-0-6"
+      },
+      {
+        "score": 2,
+        "criterion": "Annual volumes for Fabricadora S\u00e3o Paulo are correctly entered as 46,000 / 54,000 / 63,000 for Years 1, 2, and 3 respectively",
+        "rubric_item_id": "syn-0-7"
+      },
+      {
+        "score": 2,
+        "criterion": "Annual volumes for Metal\u00fargica Curitiba are correctly entered as 43,500 / 51,000 / 59,500 for Years 1, 2, and 3 respectively",
+        "rubric_item_id": "syn-0-8"
+      },
+      {
+        "score": 2,
+        "criterion": "Correct unit prices are applied per vendor: BRL 12,450.00 for Fabricadora S\u00e3o Paulo, BRL 9,830.00 for Metal\u00fargica Curitiba, and BRL 11,500.00 for Comparison Vendor",
+        "rubric_item_id": "syn-0-9"
+      },
+      {
+        "score": 2,
+        "criterion": "Annual procurement spend is correctly calculated as volume \u00d7 unit price for all three vendors and all three years (e.g., Fabricadora Year 1: BRL 572,700,000; Metal\u00fargica Year 1: BRL 427,605,000; Comparison Year 1: BRL 529,000,000)",
+        "rubric_item_id": "syn-0-10"
+      },
+      {
+        "score": 2,
+        "criterion": "NPV is correctly calculated for each vendor using a 12% annual discount rate and end-of-year timing (Fabricadora \u2248 BRL 1,605,577,000; Metal\u00fargica \u2248 BRL 1,197,756,000; Comparison \u2248 BRL 1,483,064,000; values within \u00b11% tolerance)",
+        "rubric_item_id": "syn-0-11"
+      },
+      {
+        "score": 2,
+        "criterion": "The summary sheet correctly identifies Metal\u00fargica Curitiba as the vendor with the lowest NPV",
+        "rubric_item_id": "syn-0-12"
+      }
+    ],
+    "deliverable_files": [
+      "hydraulic_valve_vendor_npv_analysis.xlsx"
+    ],
+    "task_summary": "Build a five-sheet Excel workbook performing NPV analysis at a 12% discount rate for three hydraulic valve assembly vendors (Fabricadora S\u00e3o Paulo, Metal\u00fargica Curitiba, and a volume-tiered Comparison Vendor) over a 3-year production program, with a side-by-side summary and documented assumptions."
+  },
+  {
+    "original_task_id": "83d10b06-26d1-4636-a32c-23f92c57f30b",
+    "occupation": "Accountants and Auditors",
+    "sector": "Professional, Scientific, and Technical Services",
+    "pool_c_file": "data/pool_c/83d10b06_xlsx_v1.xlsx",
+    "file_type": "xlsx",
+    "variant_idx": 1,
+    "prompt": "You are a senior auditor at an independent assurance firm engaged to conduct substantive testing of revenue recognition accuracy for a professional services consultancy. The client has provided you with a revenue performance dataset in the file `83d10b06_xlsx_v1.xlsx`, which contains a single worksheet named `Revenue_Performance` with 1,200 records (rows 2 through 1201, excluding the header in row 1) spanning multiple business groups\u2014including Nexvara Advisory, Velorik Digital, and Talindra Tax\u2014across practice areas such as M&A Transaction Services, Transfer Pricing, and Risk & Compliance Assurance, and office entities such as Delvara Office, Brentwick Office, Halverton Office, and Ironmere Hub.\n\nYour engagement requires you to apply attribute sampling to select a statistically representative sample of revenue records for detailed testing. Document your sampling methodology and present the selected sample in an Excel workbook named `AuditSample.xlsx`.\n\n**Workbook Structure Requirements:**\n\n1. **Sample data worksheet (first worksheet):** This sheet must contain the selected sample records copied directly from `Revenue_Performance`. Preserve only columns A through H (`Record_ID`, `Business_Group`, `Practice_Area`, `Region`, `Office_Entity`, `Service_Line`, `Pipeline_Open_USD`, `Deals_In_Pipeline`), in the same column order and with header text identical to the source sheet.\n\n2. **Sampling methodology worksheet:** Create a separate worksheet named exactly `Sample Size Calculation`. This worksheet must document your full sampling methodology, including:\n   - The confidence level adopted for this engagement: **90%**\n   - The tolerable error rate: **10%**\n   - The population size N (must equal the count of data rows in `Revenue_Performance`, excluding the header)\n   - The standard attribute sampling formula applied with z = 1.645 (90% confidence), p = 0.5 (conservative proportion), and e = 0.10\n   - The unrestricted sample size n\u2080 derived from: n\u2080 = (z\u00b2 \u00d7 p \u00d7 (1 \u2212 p)) / e\u00b2\n   - The finite population correction (FPC) applied as: n = (n\u2080 \u00d7 N) / (n\u2080 + N \u2212 1)\n   - The final required sample size R, reported as an integer using ceiling rounding of the FPC-adjusted n\n\nEnsure the sample worksheet contains exactly R records randomly drawn from the population. All sampled `Record_ID` values must be valid entries present in the `Revenue_Performance` sheet, and the sample must contain no duplicate records.",
+    "rubric_pretty": "[+2] The submitted deliverable is an Excel workbook file whose basename is 'AuditSample' (accept .xlsx, .xls, or .xlsm).\n\n[+2] The workbook contains a worksheet named exactly 'Sample Size Calculation' (case-insensitive, ignoring surrounding spaces).\n\n[+2] The 'Sample Size Calculation' worksheet explicitly states a confidence level of 90% and a tolerable error rate of 10%.\n\n[+2] The 'Sample Size Calculation' worksheet shows the population size N and N equals 1200, matching the 1200 data rows in the Revenue_Performance sheet (excluding the header row).\n\n[+2] The 'Sample Size Calculation' worksheet applies the standard attribute sampling formula with z = 1.645, p = 0.5, and e = 0.10; the unrestricted sample size n\u2080 is computed and shown (approximately 67.65).\n\n[+2] The 'Sample Size Calculation' worksheet applies finite population correction as n = (n\u2080 \u00d7 N) / (n\u2080 + N \u2212 1); the FPC-adjusted value n (approximately 64.09) is shown and the final required sample size R is reported as an integer using ceiling rounding, giving R = 65.\n\n[+2] The first worksheet contains selected sample data copied from Revenue_Performance with columns A through H preserved in the same column order and with header text identical to the Revenue_Performance sheet (Record_ID, Business_Group, Practice_Area, Region, Office_Entity, Service_Line, Pipeline_Open_USD, Deals_In_Pipeline).\n\n[+2] The first worksheet contains exactly 65 data rows (excluding the header row), matching R.\n\n[+2] Every Record_ID value appearing in the sample worksheet is a valid Record_ID present in the Revenue_Performance sheet of the source file (no fabricated or out-of-range identifiers).\n\n[+2] The sample worksheet contains no duplicate Record_ID values; all 65 sampled records are distinct.\n\n[+2] The 'Sample Size Calculation' worksheet identifies the source data by referencing the sheet name 'Revenue_Performance' and/or the source file name.\n\n[+2] The workbook contains at least two distinct worksheets: the sample data worksheet and the 'Sample Size Calculation' worksheet are separate sheets (not the same tab).",
+    "rubric_json": [
+      {
+        "score": 2,
+        "criterion": "The submitted deliverable is an Excel workbook file whose basename is 'AuditSample' (accept .xlsx, .xls, or .xlsm).",
+        "rubric_item_id": "syn-1-1"
+      },
+      {
+        "score": 2,
+        "criterion": "The workbook contains a worksheet named exactly 'Sample Size Calculation' (case-insensitive, ignoring surrounding spaces).",
+        "rubric_item_id": "syn-1-2"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet explicitly states a confidence level of 90% and a tolerable error rate of 10%.",
+        "rubric_item_id": "syn-1-3"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet shows the population size N and N equals 1200, matching the 1200 data rows in the Revenue_Performance sheet (excluding the header row).",
+        "rubric_item_id": "syn-1-4"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet applies the standard attribute sampling formula with z = 1.645, p = 0.5, and e = 0.10; the unrestricted sample size n0 is computed and shown (approximately 67.65).",
+        "rubric_item_id": "syn-1-5"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet applies finite population correction as n = (n0 * N) / (n0 + N - 1); the FPC-adjusted value n (approximately 64.09) is shown and the final required sample size R is reported as an integer using ceiling rounding, giving R = 65.",
+        "rubric_item_id": "syn-1-6"
+      },
+      {
+        "score": 2,
+        "criterion": "The first worksheet contains selected sample data copied from Revenue_Performance with columns A through H preserved in the same column order and with header text identical to the Revenue_Performance sheet (Record_ID, Business_Group, Practice_Area, Region, Office_Entity, Service_Line, Pipeline_Open_USD, Deals_In_Pipeline).",
+        "rubric_item_id": "syn-1-7"
+      },
+      {
+        "score": 2,
+        "criterion": "The first worksheet contains exactly 65 data rows (excluding the header row), matching R.",
+        "rubric_item_id": "syn-1-8"
+      },
+      {
+        "score": 2,
+        "criterion": "Every Record_ID value appearing in the sample worksheet is a valid Record_ID present in the Revenue_Performance sheet of the source file (no fabricated or out-of-range identifiers).",
+        "rubric_item_id": "syn-1-9"
+      },
+      {
+        "score": 2,
+        "criterion": "The sample worksheet contains no duplicate Record_ID values; all 65 sampled records are distinct.",
+        "rubric_item_id": "syn-1-10"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet identifies the source data by referencing the sheet name 'Revenue_Performance' and/or the source file name.",
+        "rubric_item_id": "syn-1-11"
+      },
+      {
+        "score": 2,
+        "criterion": "The workbook contains at least two distinct worksheets: the sample data worksheet and the 'Sample Size Calculation' worksheet are separate sheets (not the same tab).",
+        "rubric_item_id": "syn-1-12"
+      }
+    ],
+    "deliverable_files": [
+      "AuditSample.xlsx"
+    ],
+    "task_summary": "Prepare a statistical attribute sampling workbook (AuditSample.xlsx) for auditing revenue performance records, including a documented sample size calculation (90% confidence, 10% tolerable error, N=1200, FPC-adjusted R=65) and a sample data sheet with 65 randomly selected records from the Revenue_Performance population."
+  },
+  {
+    "original_task_id": "83d10b06-26d1-4636-a32c-23f92c57f30b",
+    "occupation": "Accountants and Auditors",
+    "sector": "Professional, Scientific, and Technical Services",
+    "pool_c_file": "data/pool_c/83d10b06_xlsx_v2.xlsx",
+    "file_type": "xlsx",
+    "variant_idx": 2,
+    "prompt": "You are an external auditor at a professional assurance firm engaged to conduct a KPI Compliance Audit for a multi-regional professional services organization. The client operates a network of facilities across regions including the Nordavian Region, Estralian Zone, and Veladric Plains, with performance data maintained by legal entities such as Pinnacle Audit Services Ltd and Quorath Audit Holdings Inc.\n\nAs part of the audit scope, your manager has tasked you with performing attribute sampling to test the completeness and accuracy of reported quarterly KPI summaries in the client's Performance_Summary dataset (sourced from the file 83d10b06_xlsx_v2.xlsx). The engagement team has agreed on the following sampling parameters: a confidence level of 90%, a tolerable error rate (maximum acceptable proportion of errors) of 10%, and the conservative expected error rate of p = 0.5. Apply the standard attribute sampling formula and a finite population correction (FPC) when determining the required sample size.\n\nThe population for this test is the Performance_Summary sheet in the reference file, which contains quarterly performance records for each facility-period combination (e.g., columns Summary_ID, Facility_ID, Facility_Name_Lookup, Legal_Entity_Lookup, Period, Throughput_vs_Target_Pct, Cycle_Time_Efficiency_Rating, Defect_Compliance_Status, Utilization_Status, Performance_Rating, YTD_Throughput_Cases, QoQ_Throughput_Change_Pct, Risk_Flag, Escalation_Required). The header row is excluded from the population count.\n\nPrepare an Excel workbook named Facility_Sample (.xlsx, .xls, or .xlsm) containing exactly the following three worksheets:\n\n1. A worksheet named 'Sample Size Calculation' that documents: the agreed confidence level (90%) and tolerable error rate (10%); the population size N derived from the Performance_Summary sheet; the sampling parameters used (z = 1.645, p = 0.5, e = 0.10); the unadjusted sample size n0; the finite-population-corrected sample size; and the final required sample size R reported as an integer (ceiling function applied).\n\n2. A worksheet named 'Sample' (positioned as the first sheet in the workbook) containing the selected sample records copied from the Performance_Summary sheet. All 14 columns (A through N) must be preserved in their original order with header text identical to the source sheet. The worksheet must contain exactly R data rows selected from the population. Each selected record must correspond to a valid row in the Performance_Summary source data, identifiable by its Summary_ID.\n\n3. A worksheet named 'Risk Summary' that provides the following analyses based solely on the records in the Sample sheet: (a) a breakdown of sampled records by Risk_Flag value (Red, Amber, Green) with a count for each category; (b) the total count of sampled records where Escalation_Required equals 'Yes'; and (c) a list or count of unique Facility_ID values represented in the sample.\n\nEnsure all worksheet names match exactly as specified (comparisons are case-insensitive and ignore surrounding spaces). The workbook must contain no fewer and no more than these three worksheets.",
+    "rubric_pretty": "[+2] The submitted deliverable is an Excel workbook file whose basename is 'Facility_Sample' (accept .xlsx, .xls, or .xlsm).\n\n[+2] The workbook contains a worksheet named exactly 'Sample Size Calculation' (case-insensitive, ignoring surrounding spaces).\n\n[+2] The 'Sample Size Calculation' worksheet explicitly states a confidence level of 90% and a tolerable error rate of 10%.\n\n[+2] The 'Sample Size Calculation' worksheet shows the population size N and N equals 480 (the number of data rows in the Performance_Summary sheet, excluding the header row).\n\n[+2] The 'Sample Size Calculation' worksheet uses z = 1.645, p = 0.5, e = 0.10 and applies a finite population correction; the final required sample size R is reported as the integer 60 (ceiling of the FPC-adjusted value).\n\n[+2] The workbook contains a worksheet named 'Sample' that is the first (leftmost) sheet in the workbook.\n\n[+2] The 'Sample' worksheet preserves all 14 columns (Summary_ID through Escalation_Required) in the same left-to-right order and with header text identical to the Performance_Summary source sheet.\n\n[+2] The 'Sample' worksheet contains exactly 60 data rows (R = 60), excluding the header.\n\n[+2] Every Summary_ID value appearing in the 'Sample' worksheet corresponds to a valid record in the Performance_Summary source data (no fabricated or out-of-range IDs).\n\n[+2] The workbook contains a worksheet named exactly 'Risk Summary' (case-insensitive, ignoring surrounding spaces).\n\n[+2] The 'Risk Summary' worksheet contains a breakdown of the sample records by Risk_Flag (Red, Amber, Green) with per-category counts that are consistent with the records displayed in the 'Sample' worksheet.\n\n[+2] The 'Risk Summary' worksheet reports the total count of sampled records where Escalation_Required = 'Yes', and that count is consistent with the records in the 'Sample' worksheet.",
+    "rubric_json": [
+      {
+        "score": 2,
+        "criterion": "The submitted deliverable is an Excel workbook file whose basename is 'Facility_Sample' (accept .xlsx, .xls, or .xlsm).",
+        "rubric_item_id": "syn-2-1"
+      },
+      {
+        "score": 2,
+        "criterion": "The workbook contains a worksheet named exactly 'Sample Size Calculation' (case-insensitive, ignoring surrounding spaces).",
+        "rubric_item_id": "syn-2-2"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet explicitly states a confidence level of 90% and a tolerable error rate of 10%.",
+        "rubric_item_id": "syn-2-3"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet shows the population size N and N equals 480 (the number of data rows in the Performance_Summary sheet, excluding the header row).",
+        "rubric_item_id": "syn-2-4"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet uses z = 1.645, p = 0.5, e = 0.10 and applies a finite population correction; the final required sample size R is reported as the integer 60 (ceiling of the FPC-adjusted value).",
+        "rubric_item_id": "syn-2-5"
+      },
+      {
+        "score": 2,
+        "criterion": "The workbook contains a worksheet named 'Sample' that is the first (leftmost) sheet in the workbook.",
+        "rubric_item_id": "syn-2-6"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample' worksheet preserves all 14 columns (Summary_ID through Escalation_Required) in the same left-to-right order and with header text identical to the Performance_Summary source sheet.",
+        "rubric_item_id": "syn-2-7"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample' worksheet contains exactly 60 data rows (R = 60), excluding the header.",
+        "rubric_item_id": "syn-2-8"
+      },
+      {
+        "score": 2,
+        "criterion": "Every Summary_ID value appearing in the 'Sample' worksheet corresponds to a valid record in the Performance_Summary source data (no fabricated or out-of-range IDs).",
+        "rubric_item_id": "syn-2-9"
+      },
+      {
+        "score": 2,
+        "criterion": "The workbook contains a worksheet named exactly 'Risk Summary' (case-insensitive, ignoring surrounding spaces).",
+        "rubric_item_id": "syn-2-10"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Risk Summary' worksheet contains a breakdown of the sample records by Risk_Flag (Red, Amber, Green) with per-category counts that are consistent with the records displayed in the 'Sample' worksheet.",
+        "rubric_item_id": "syn-2-11"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Risk Summary' worksheet reports the total count of sampled records where Escalation_Required = 'Yes', and that count is consistent with the records in the 'Sample' worksheet.",
+        "rubric_item_id": "syn-2-12"
+      }
+    ],
+    "deliverable_files": [
+      "Facility_Sample.xlsx"
+    ],
+    "task_summary": "Auditor applies attribute sampling (90% confidence, 10% tolerable error, FPC-corrected n=60) to the Performance_Summary KPI dataset and delivers an Excel workbook with a sample size calculation sheet, 60 sampled records, and a risk flag summary."
+  },
+  {
+    "original_task_id": "83d10b06-26d1-4636-a32c-23f92c57f30b",
+    "occupation": "Accountants and Auditors",
+    "sector": "Professional, Scientific, and Technical Services",
+    "pool_c_file": "data/pool_c/83d10b06_xlsx_v3.xlsx",
+    "file_type": "xlsx",
+    "variant_idx": 3,
+    "prompt": "You are an external auditor at a professional services firm engaged to perform substantive audit procedures on Veralux Group's Q3 2024 Workforce Analytics report. Your engagement manager has instructed you to design and execute an attribute sampling plan to test whether individual workforce detail records in the provided dataset are accurately and completely reported.\n\n**Reference file:** The Workforce Analytics data is provided in a spreadsheet (sheet name: \"Workforce Analytics\") containing 1,518 rows and 31 columns. Row 1 is the header row; rows 2 onward contain data records. The first eight columns (A\u2013H) are: Row_No, Region, Business_Unit, Sub_Function, Country, Legal_Entity, Grade_Band, and Row_Type. The Row_Type column indicates whether a row is a granular detail record or an aggregated summary; any row whose Row_Type cell contains the text \"Subtotal\" is an aggregate and must be excluded from the audit population. Only the remaining rows (those whose Row_Type does NOT contain \"Subtotal\") form the population subject to testing.\n\n**Your deliverable:** Create an Excel workbook named **WorkforceSample** (file extension .xlsx, .xls, or .xlsm) containing at least two worksheets structured exactly as follows.\n\n**Worksheet 1 \u2013 First worksheet in the workbook (Audit Sample):**\nThis sheet must contain the header row copied directly from the Workforce Analytics sheet, preserving columns A through H in the original column order with identical header text: Row_No, Region, Business_Unit, Sub_Function, Country, Legal_Entity, Grade_Band, Row_Type. Immediately below the header, paste exactly R data rows drawn from the audit population, where R is the required sample size computed on the Sample Size Calculation worksheet. Every sampled row must originate from a record whose Row_Type does not contain \"Subtotal\", the Row_No values must match valid source rows in the Workforce Analytics sheet, and no record may appear more than once in the sample.\n\n**Worksheet 2 \u2013 Sample Size Calculation:**\nThis sheet must fully document the sampling methodology and all intermediate results. It must explicitly state:\n- Confidence level: **90%**\n- Tolerable error (error rate): **10%**\n- Population size N: the exact count of rows in the Workforce Analytics sheet where Row_Type does NOT contain the text \"Subtotal\" (header excluded)\n- Sampling parameters: z = 1.645 (for 90% confidence), p = 0.5 (conservative expected error rate), e = 0.10\n- Intermediate result n\u2080 (initial required sample size before finite population correction): n\u2080 = (z\u00b2 \u00d7 p \u00d7 (1 \u2212 p)) / e\u00b2\n- Final required sample size R: apply the finite population correction formula n = n\u2080 / (1 + (n\u2080 \u2212 1) / N), then round up to the nearest integer using the ceiling function; report R as this integer\n- The sampling method used to select the R records from the population (e.g., simple random sampling, systematic sampling)\n\nEnsure all parameter values, intermediate computations, and the final sample size R are clearly labeled so an independent reviewer can trace and reproduce the calculation without referring to any external source.",
+    "rubric_pretty": "[+2] The submitted deliverable is an Excel workbook file whose basename is 'WorkforceSample' (accept .xlsx, .xls, or .xlsm).\n\n[+2] The workbook contains a worksheet named exactly 'Sample Size Calculation' (case-insensitive, ignoring surrounding spaces).\n\n[+2] The 'Sample Size Calculation' worksheet explicitly states a confidence level of 90% and a tolerable error (error rate) of 10%.\n\n[+2] The 'Sample Size Calculation' worksheet shows population size N, and N equals the count of rows in the Workforce Analytics sheet where Row_Type does not contain the text 'Subtotal' (excluding the header row).\n\n[+2] The 'Sample Size Calculation' worksheet shows the intermediate value n\u2080 (initial sample size before finite population correction), computed as n\u2080 = (z\u00b2 \u00d7 p \u00d7 (1 \u2212 p)) / e\u00b2 using z = 1.645, p = 0.5, e = 0.10.\n\n[+2] The 'Sample Size Calculation' worksheet applies the finite population correction formula n = n\u2080 / (1 + (n\u2080 \u2212 1) / N) and reports the final required sample size R as a ceiling integer.\n\n[+2] The 'Sample Size Calculation' worksheet documents the sampling method (e.g., simple random sampling, systematic sampling) used to select records from the population.\n\n[+2] The first worksheet in the workbook contains a header row with exactly the eight column labels from the Workforce Analytics sheet columns A\u2013H (Row_No, Region, Business_Unit, Sub_Function, Country, Legal_Entity, Grade_Band, Row_Type) in the same order and with identical text.\n\n[+2] The first worksheet contains exactly R data rows below the header (R equals the calculated required sample size from the Sample Size Calculation worksheet).\n\n[+2] All rows in the first worksheet originate from the audit population: every Row_Type value does not contain 'Subtotal', and every Row_No value corresponds to a valid row in the source Workforce Analytics sheet.\n\n[+2] No duplicate Row_No values appear among the sample rows in the first worksheet.\n\n[+2] The column A\u2013H values in the first worksheet's sample rows exactly match the corresponding source rows in the Workforce Analytics sheet (verified by cross-referencing Row_No values).",
+    "rubric_json": [
+      {
+        "score": 2,
+        "criterion": "The submitted deliverable is an Excel workbook file whose basename is 'WorkforceSample' (accept .xlsx, .xls, or .xlsm).",
+        "rubric_item_id": "syn-3-1"
+      },
+      {
+        "score": 2,
+        "criterion": "The workbook contains a worksheet named exactly 'Sample Size Calculation' (case-insensitive, ignoring surrounding spaces).",
+        "rubric_item_id": "syn-3-2"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet explicitly states a confidence level of 90% and a tolerable error (error rate) of 10%.",
+        "rubric_item_id": "syn-3-3"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet shows population size N, and N equals the count of rows in the Workforce Analytics sheet where Row_Type does not contain the text 'Subtotal' (excluding the header row).",
+        "rubric_item_id": "syn-3-4"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet shows the intermediate value n\u2080 (initial sample size before finite population correction), computed as n\u2080 = (z\u00b2 \u00d7 p \u00d7 (1 \u2212 p)) / e\u00b2 using z = 1.645, p = 0.5, e = 0.10.",
+        "rubric_item_id": "syn-3-5"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet applies the finite population correction formula n = n\u2080 / (1 + (n\u2080 \u2212 1) / N) and reports the final required sample size R as a ceiling integer.",
+        "rubric_item_id": "syn-3-6"
+      },
+      {
+        "score": 2,
+        "criterion": "The 'Sample Size Calculation' worksheet documents the sampling method (e.g., simple random sampling, systematic sampling) used to select records from the population.",
+        "rubric_item_id": "syn-3-7"
+      },
+      {
+        "score": 2,
+        "criterion": "The first worksheet in the workbook contains a header row with exactly the eight column labels from the Workforce Analytics sheet columns A\u2013H (Row_No, Region, Business_Unit, Sub_Function, Country, Legal_Entity, Grade_Band, Row_Type) in the same order and with identical text.",
+        "rubric_item_id": "syn-3-8"
+      },
+      {
+        "score": 2,
+        "criterion": "The first worksheet contains exactly R data rows below the header (R equals the calculated required sample size from the Sample Size Calculation worksheet).",
+        "rubric_item_id": "syn-3-9"
+      },
+      {
+        "score": 2,
+        "criterion": "All rows in the first worksheet originate from the audit population: every Row_Type value does not contain 'Subtotal', and every Row_No value corresponds to a valid row in the source Workforce Analytics sheet.",
+        "rubric_item_id": "syn-3-10"
+      },
+      {
+        "score": 2,
+        "criterion": "No duplicate Row_No values appear among the sample rows in the first worksheet.",
+        "rubric_item_id": "syn-3-11"
+      },
+      {
+        "score": 2,
+        "criterion": "The column A\u2013H values in the first worksheet's sample rows exactly match the corresponding source rows in the Workforce Analytics sheet (verified by cross-referencing Row_No values).",
+        "rubric_item_id": "syn-3-12"
+      }
+    ],
+    "deliverable_files": [
+      "WorkforceSample.xlsx"
+    ],
+    "task_summary": "You are an external auditor reviewing Veralux Group's Q3 2024 Workforce Analytics data and must create a sampling workbook documenting the audit population, attribute sampling size calculation (90% confidence, 10% tolerable error, finite population correction), and the selected sample records."
+  },
+  {
+    "original_task_id": "24d1e93f-9018-45d4-b522-ad89dfd78079",
+    "occupation": "Buyers and Purchasing Agents",
+    "sector": "Manufacturing",
+    "pool_c_file": "data/pool_c/24d1e93f_docx_v1.docx",
+    "file_type": "docx",
+    "variant_idx": 1,
+    "prompt": "You are a procurement officer at MedPak Industries, a pharmaceutical contract manufacturer specializing in injectable drug delivery systems. Your team is currently sourcing Pre-filled Cartridge Sub-Assemblies compliant with ISO 11040 for a new drug delivery platform entering production next year.\n\nFollowing an RFQ process conducted under the Component Pricing Policy and Procedures, three suppliers have submitted the following quotations:\n\n\u2022 PharmoParts Ltd: Fixed price of INR 7,286 per unit at all order volumes. The quoted price includes Base Polymer Housing Cost (INR 5,940) and ISO 11040 Compliance Surface Treatment (INR 820).\n\n\u2022 CartriGen Solutions: Fixed price of INR 5,834 per unit at all order volumes. The quoted price includes Base Polymer Housing Cost (INR 4,720) and ISO 11040 Compliance Surface Treatment (INR 680).\n\n\u2022 PolyMed Components: Volume-tiered pricing \u2014 INR 6,347 per unit for quantities fewer than 5,000; INR 6,150 for 5,000\u20139,999 units; INR 6,050 for 10,000 units or more.\n\nThe annual procurement forecast over the five-year product horizon is: Year 1 \u2013 50,000 units; Year 2 \u2013 75,000 units; Year 3 \u2013 100,000 units; Year 4 \u2013 100,000 units; Year 5 \u2013 125,000 units. All projected annual volumes exceed 10,000 units, so PolyMed Components' lowest tier rate (INR 6,050) applies to every year.\n\nUsing a discount rate of 10% per annum (MedPak's WACC), calculate the Net Present Value (NPV) of total procurement costs for each supplier across the five-year horizon. Assume cash flows occur at the end of each year (discount factors: 1/1.1 for Year 1, 1/1.21 for Year 2, 1/1.331 for Year 3, 1/1.4641 for Year 4, 1/1.61051 for Year 5).\n\nPrepare and submit a single Microsoft Excel workbook (.xlsx) named supplier_npv_analysis.xlsx containing the following five sheets:\n\n1. PharmoParts_NPV \u2013 Dedicated NPV calculation for PharmoParts Ltd, showing for each of the five years: unit price, cost component breakdown (Base Polymer Housing Cost and ISO 11040 Compliance Surface Treatment as separate line items), annual procurement volume, annual total cost, discount factor, discounted annual cost, and running cumulative NPV.\n\n2. CartriGen_NPV \u2013 Identical structure for CartriGen Solutions, including cost component breakdown.\n\n3. PolyMed_NPV \u2013 Identical year-by-year structure for PolyMed Components using the INR 6,050 per-unit rate for all years (no cost-component breakdown required for this supplier).\n\n4. Summary \u2013 Side-by-side comparison of all three suppliers displaying: total undiscounted procurement cost over 5 years, NPV of total procurement costs, and a clearly stated recommended supplier based on lowest NPV.\n\n5. Assumptions \u2013 A dedicated area listing all key inputs used in the analysis: per-unit prices for each supplier, PolyMed volume-tier thresholds and corresponding rates, cost component values (Base Polymer Housing Cost and ISO 11040 Compliance Surface Treatment) for PharmoParts Ltd and CartriGen Solutions, the annual volume forecast for each year, the discount rate, and the NPV cash-flow timing convention (end-of-year).",
+    "rubric_pretty": "[+2] Provides the deliverable as a single Microsoft Excel workbook in .xlsx format named supplier_npv_analysis.xlsx\n[+2] Workbook contains a dedicated NPV calculation sheet for PharmoParts Ltd\n[+2] Workbook contains a dedicated NPV calculation sheet for CartriGen Solutions\n[+2] Workbook contains a dedicated NPV calculation sheet for PolyMed Components\n[+2] Workbook includes a Summary sheet comparing all three suppliers side-by-side\n[+2] Workbook includes an Assumptions sheet listing all key inputs (unit prices, PolyMed tier thresholds, cost component values, annual volumes, discount rate, and NPV cash-flow convention)\n[+2] PharmoParts Ltd sheet correctly uses INR 7,286 per unit and shows Base Polymer Housing Cost (INR 5,940) and ISO 11040 Compliance Surface Treatment (INR 820) as separate cost sub-components\n[+2] CartriGen Solutions sheet correctly uses INR 5,834 per unit and shows Base Polymer Housing Cost (INR 4,720) and ISO 11040 Compliance Surface Treatment (INR 680) as separate cost sub-components\n[+2] PolyMed Components sheet correctly applies INR 6,050 per unit for all five years (10,000-unit volume tier)\n[+2] Annual procurement volumes are correctly applied across all supplier sheets: Year 1 = 50,000; Year 2 = 75,000; Year 3 = 100,000; Year 4 = 100,000; Year 5 = 125,000\n[+2] Annual total costs are correctly computed as unit price \u00d7 annual volume for each supplier and year\n[+2] NPV is correctly calculated using a 10% annual discount rate with end-of-year discounting (factors 1/1.1, 1/1.21, 1/1.331, 1/1.4641, 1/1.61051) for each supplier\n[+2] Summary sheet correctly displays total undiscounted cost and NPV of total procurement costs for all three suppliers\n[+2] Summary sheet correctly identifies CartriGen Solutions as the recommended supplier on the basis of lowest NPV of total procurement costs",
+    "rubric_json": [
+      {
+        "score": 2,
+        "criterion": "Provides the deliverable as a single Microsoft Excel workbook in .xlsx format named supplier_npv_analysis.xlsx",
+        "rubric_item_id": "syn-1-1"
+      },
+      {
+        "score": 2,
+        "criterion": "Workbook contains a dedicated NPV calculation sheet for PharmoParts Ltd",
+        "rubric_item_id": "syn-1-2"
+      },
+      {
+        "score": 2,
+        "criterion": "Workbook contains a dedicated NPV calculation sheet for CartriGen Solutions",
+        "rubric_item_id": "syn-1-3"
+      },
+      {
+        "score": 2,
+        "criterion": "Workbook contains a dedicated NPV calculation sheet for PolyMed Components",
+        "rubric_item_id": "syn-1-4"
+      },
+      {
+        "score": 2,
+        "criterion": "Workbook includes a Summary sheet comparing all three suppliers side-by-side",
+        "rubric_item_id": "syn-1-5"
+      },
+      {
+        "score": 2,
+        "criterion": "Workbook includes an Assumptions sheet listing all key inputs (unit prices, PolyMed tier thresholds, cost component values, annual volumes, discount rate, and NPV cash-flow convention)",
+        "rubric_item_id": "syn-1-6"
+      },
+      {
+        "score": 2,
+        "criterion": "PharmoParts Ltd sheet correctly uses INR 7,286 per unit and shows Base Polymer Housing Cost (INR 5,940) and ISO 11040 Compliance Surface Treatment (INR 820) as separate cost sub-components",
+        "rubric_item_id": "syn-1-7"
+      },
+      {
+        "score": 2,
+        "criterion": "CartriGen Solutions sheet correctly uses INR 5,834 per unit and shows Base Polymer Housing Cost (INR 4,720) and ISO 11040 Compliance Surface Treatment (INR 680) as separate cost sub-components",
+        "rubric_item_id": "syn-1-8"
+      },
+      {
+        "score": 2,
+        "criterion": "PolyMed Components sheet correctly applies INR 6,050 per unit for all five years (10,000-unit volume tier)",
+        "rubric_item_id": "syn-1-9"
+      },
+      {
+        "score": 2,
+        "criterion": "Annual procurement volumes are correctly applied across all supplier sheets: Year 1 = 50,000; Year 2 = 75,000; Year 3 = 100,000; Year 4 = 100,000; Year 5 = 125,000",
+        "rubric_item_id": "syn-1-10"
+      },
+      {
+        "score": 2,
+        "criterion": "Annual total costs are correctly computed as unit price \u00d7 annual volume for each supplier and year",
+        "rubric_item_id": "syn-1-11"
+      },
+      {
+        "score": 2,
+        "criterion": "NPV is correctly calculated using a 10% annual discount rate with end-of-year discounting (factors 1/1.1, 1/1.21, 1/1.331, 1/1.4641, 1/1.61051) for each supplier",
+        "rubric_item_id": "syn-1-12"
+      },
+      {
+        "score": 2,
+        "criterion": "Summary sheet correctly displays total undiscounted cost and NPV of total procurement costs for all three suppliers",
+        "rubric_item_id": "syn-1-13"
+      },
+      {
+        "score": 2,
+        "criterion": "Summary sheet correctly identifies CartriGen Solutions as the recommended supplier on the basis of lowest NPV of total procurement costs",
+        "rubric_item_id": "syn-1-14"
+      }
+    ],
+    "deliverable_files": [
+      "supplier_npv_analysis.xlsx"
+    ],
+    "task_summary": "Prepare a five-year NPV cost analysis comparing three ISO 11040-compliant Pre-filled Cartridge Sub-Assembly suppliers (PharmoParts Ltd, CartriGen Solutions, and PolyMed Components) in a structured Excel workbook with per-supplier calculation sheets, a side-by-side summary, and an assumptions sheet."
+  }
+]

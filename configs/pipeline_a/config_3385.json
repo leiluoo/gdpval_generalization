@@ -1,0 +1,20 @@
+{
+  "query": "You are creating a synthetic reference file for AI training data.\n\nThe original file `Heat Shield Request.pdf` is in the `reference_files/` folder.\nRead it carefully to understand its structure, column layout, data types, and conventions.\n\nYour job is to create a NEW PDF file with a different scenario but the same structural pattern. Follow ALL of these constraints exactly:\n\nYOU MUST generate a file that satisfies ALL of the following constraints:\n  • DOC TYPE: summary report — aggregated data with section headings and narrative\n  • CONTENT DENSITY: text-heavy — mostly narrative; tables are supplementary\n  • DOMAIN: government and public administration\n\nDo not ignore any constraint above. If a constraint conflicts with a superficially 'simpler' approach, follow the constraint.\n\nINSTRUCTIONS:\n1. Open and examine `reference_files/Heat Shield Request.pdf`\n2. Create a new PDF file that:\n   - Follows the same structural pattern as the original (same number of sheets / same table layout / same document genre)\n   - Adapts content and column semantics to the DOMAIN constraint above\n   - Implements the DATA STRUCTURE, COMPUTATION, and TIME DIMENSION constraints\n   - Uses completely fictional entity names (companies, people, organisations, places)\n   - Has realistic numeric values appropriate for the specified domain\n3. Save the file as `Heat_Shield_Request_v85.pdf` in the current workspace directory\n\nRULES:\n- Do NOT copy any actual data values, company names, or metric names from the original file\n- All content must be internally consistent and realistic\n- The output must be a valid, well-formed PDF file\n- If the original has multiple sheets, create the same number of sheets with matching purposes\n",
+  "resource_dir": [
+    "obs://bucket-pangu-green-guiyang/qianmin/opensource_dataset/gdpval/reference_files/c037d7c3ad5619ff64346a7da5c75502/Heat Shield Request.pdf"
+  ],
+  "output": "synth_file_3385",
+  "skill_dir": [
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/spreadsheet",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/pdf",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/doc-coauthoring",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/xlsx",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/docx",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/internal-comms",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/pptx",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/csv-data-summarizer",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/pdf-processing-pro",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/markitdown",
+    "obs://bucket-pangu-green-guiyang/z00935217/data/developing/skills/common_skills/markdown-formatter"
+  ]
+}

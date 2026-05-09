@@ -1,0 +1,678 @@
+[
+  {
+    "original_task_id": "83d10b06-26d1-4636-a32c-23f92c57f30b",
+    "occupation": "Accountants and Auditors",
+    "sector": "Professional, Scientific, and Technical Services",
+    "original_ref_file": "reference_files/cc781e4dc0985c8eb327a53ec03b5900/Population v2.xlsx",
+    "file_type": "xlsx",
+    "variant_idx": 0,
+    "diversity_spec": {
+      "data_structure": "single flat table \u2014 all data in one sheet, each row is an independent record",
+      "computation": "raw data only \u2014 no formulas; model must compute everything from scratch",
+      "time_dimension": "no time dimension \u2014 static snapshot, no periods",
+      "domain": "financial risk and compliance metrics (KRIs, VaR, regulatory breach counts)"
+    },
+    "pool_c_file": "data/pool_c/83d10b06_xlsx_v0.xlsx",
+    "schema": {
+      "file_type": "xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "row_count": 1517,
+          "col_count": 8,
+          "has_header": true,
+          "columns": [
+            {
+              "index": 0,
+              "header": "No",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                1.0,
+                3.0
+              ]
+            },
+            {
+              "index": 1,
+              "header": "Division",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 2,
+              "header": "Sub-Division",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 3,
+              "header": "Country",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 4,
+              "header": "Legal Entity",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 5,
+              "header": "KRIs",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 3
+            },
+            {
+              "index": 6,
+              "header": "Q3 2024 KRI",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                0.0,
+                5923912.0
+              ]
+            },
+            {
+              "index": 7,
+              "header": "Q2 2024 KRI",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                0.0,
+                5501331.0
+              ]
+            }
+          ],
+          "formula_patterns": []
+        }
+      ]
+    }
+  },
+  {
+    "original_task_id": "83d10b06-26d1-4636-a32c-23f92c57f30b",
+    "occupation": "Accountants and Auditors",
+    "sector": "Professional, Scientific, and Technical Services",
+    "original_ref_file": "reference_files/cc781e4dc0985c8eb327a53ec03b5900/Population v2.xlsx",
+    "file_type": "xlsx",
+    "variant_idx": 1,
+    "diversity_spec": {
+      "data_structure": "hierarchical columns \u2014 parent/child groupings in columns (e.g. Division > Sub-Division > Entity), rows represent leaf-level records",
+      "computation": "multi-step derived columns \u2014 intermediate computed columns that feed into final summary columns",
+      "time_dimension": "rolling or cumulative \u2014 requires understanding window logic (e.g. trailing 3-month average)",
+      "domain": "sales and revenue performance (pipeline, bookings, revenue by product/region)"
+    },
+    "pool_c_file": "data/pool_c/83d10b06_xlsx_v1.xlsx",
+    "schema": {
+      "file_type": "xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "row_count": 1517,
+          "col_count": 8,
+          "has_header": true,
+          "columns": [
+            {
+              "index": 0,
+              "header": "No",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                1.0,
+                3.0
+              ]
+            },
+            {
+              "index": 1,
+              "header": "Division",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 2,
+              "header": "Sub-Division",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 3,
+              "header": "Country",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 4,
+              "header": "Legal Entity",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 5,
+              "header": "KRIs",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 3
+            },
+            {
+              "index": 6,
+              "header": "Q3 2024 KRI",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                0.0,
+                5923912.0
+              ]
+            },
+            {
+              "index": 7,
+              "header": "Q2 2024 KRI",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                0.0,
+                5501331.0
+              ]
+            }
+          ],
+          "formula_patterns": []
+        }
+      ]
+    }
+  },
+  {
+    "original_task_id": "83d10b06-26d1-4636-a32c-23f92c57f30b",
+    "occupation": "Accountants and Auditors",
+    "sector": "Professional, Scientific, and Technical Services",
+    "original_ref_file": "reference_files/cc781e4dc0985c8eb327a53ec03b5900/Population v2.xlsx",
+    "file_type": "xlsx",
+    "variant_idx": 2,
+    "diversity_spec": {
+      "data_structure": "multi-sheet with cross-references \u2014 data split across 2-3 sheets; downstream sheets reference upstream ones",
+      "computation": "conditional logic \u2014 IF/IFS/VLOOKUP conditions that require understanding thresholds or lookup rules",
+      "time_dimension": "multi-period time series \u2014 4+ consecutive periods for trend or YTD analysis",
+      "domain": "operational efficiency (throughput, cycle time, defect rate, equipment utilization)"
+    },
+    "pool_c_file": "data/pool_c/83d10b06_xlsx_v2.xlsx",
+    "schema": {
+      "file_type": "xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "row_count": 1517,
+          "col_count": 8,
+          "has_header": true,
+          "columns": [
+            {
+              "index": 0,
+              "header": "No",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                1.0,
+                3.0
+              ]
+            },
+            {
+              "index": 1,
+              "header": "Division",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 2,
+              "header": "Sub-Division",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 3,
+              "header": "Country",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 4,
+              "header": "Legal Entity",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 5,
+              "header": "KRIs",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 3
+            },
+            {
+              "index": 6,
+              "header": "Q3 2024 KRI",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                0.0,
+                5923912.0
+              ]
+            },
+            {
+              "index": 7,
+              "header": "Q2 2024 KRI",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                0.0,
+                5501331.0
+              ]
+            }
+          ],
+          "formula_patterns": []
+        }
+      ]
+    }
+  },
+  {
+    "original_task_id": "83d10b06-26d1-4636-a32c-23f92c57f30b",
+    "occupation": "Accountants and Auditors",
+    "sector": "Professional, Scientific, and Technical Services",
+    "original_ref_file": "reference_files/cc781e4dc0985c8eb327a53ec03b5900/Population v2.xlsx",
+    "file_type": "xlsx",
+    "variant_idx": 3,
+    "diversity_spec": {
+      "data_structure": "pivot/cross-tab matrix \u2014 categories on both row and column axes; cells are intersection values",
+      "computation": "simple aggregation \u2014 SUM/COUNT/AVERAGE formulas present as scaffolding",
+      "time_dimension": "two-period side-by-side \u2014 two columns for two quarters/years; model must compute variance",
+      "domain": "HR and workforce analytics (headcount, attrition, training completion, grade distribution)"
+    },
+    "pool_c_file": "data/pool_c/83d10b06_xlsx_v3.xlsx",
+    "schema": {
+      "file_type": "xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "row_count": 1517,
+          "col_count": 8,
+          "has_header": true,
+          "columns": [
+            {
+              "index": 0,
+              "header": "No",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                1.0,
+                3.0
+              ]
+            },
+            {
+              "index": 1,
+              "header": "Division",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 2,
+              "header": "Sub-Division",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 3,
+              "header": "Country",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 4,
+              "header": "Legal Entity",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 1
+            },
+            {
+              "index": 5,
+              "header": "KRIs",
+              "types": [
+                "str"
+              ],
+              "sample_values_count": 3
+            },
+            {
+              "index": 6,
+              "header": "Q3 2024 KRI",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                0.0,
+                5923912.0
+              ]
+            },
+            {
+              "index": 7,
+              "header": "Q2 2024 KRI",
+              "types": [
+                "float"
+              ],
+              "sample_range": [
+                0.0,
+                5501331.0
+              ]
+            }
+          ],
+          "formula_patterns": []
+        }
+      ]
+    }
+  },
+  {
+    "original_task_id": "24d1e93f-9018-45d4-b522-ad89dfd78079",
+    "occupation": "Buyers and Purchasing Agents",
+    "sector": "Manufacturing",
+    "original_ref_file": "reference_files/787218a67c75e5c2f6dc405027a2f07c/Quotations and volume projection for model I headlamp.docx",
+    "file_type": "docx",
+    "variant_idx": 0,
+    "diversity_spec": {
+      "doc_type": "policy or procedure reference \u2014 rules with applicability conditions and exception tables",
+      "content_generation_need": "narrative synthesis \u2014 model must turn tabular data into cohesive prose paragraphs",
+      "structural_complexity": "complex: multi-level headings (H1/H2/H3) with embedded tables, lists, and footnotes",
+      "domain": "energy equipment and industrial machinery"
+    },
+    "pool_c_file": "data/pool_c/24d1e93f_docx_v0.docx",
+    "schema": {
+      "file_type": "docx",
+      "paragraph_count": 10,
+      "table_count": 4,
+      "paragraph_structure": [
+        {
+          "style": "Normal",
+          "word_count": 5,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 7,
+          "has_numbers": false
+        },
+        {
+          "style": "List Paragraph",
+          "word_count": 1,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 3,
+          "has_numbers": false
+        },
+        {
+          "style": "List Paragraph",
+          "word_count": 1,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 3,
+          "has_numbers": false
+        },
+        {
+          "style": "List Paragraph",
+          "word_count": 1,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 3,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 9,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 15,
+          "has_numbers": true
+        }
+      ],
+      "tables": [
+        {
+          "rows": 5,
+          "cols": 3,
+          "has_header": true,
+          "col_headers": [
+            "Part price (Top variant)",
+            "7,286.00",
+            "INR"
+          ],
+          "sample_row_types": [
+            "text",
+            "numeric",
+            "text"
+          ]
+        },
+        {
+          "rows": 5,
+          "cols": 3,
+          "has_header": true,
+          "col_headers": [
+            "Part price (Top variant)",
+            "5,834.00",
+            "INR"
+          ],
+          "sample_row_types": [
+            "text",
+            "numeric",
+            "text"
+          ]
+        },
+        {
+          "rows": 7,
+          "cols": 3,
+          "has_header": true,
+          "col_headers": [
+            "Part price (for quantity < 100000)(Top variant)",
+            "6,347.00",
+            "INR"
+          ],
+          "sample_row_types": [
+            "numeric",
+            "numeric",
+            "text"
+          ]
+        },
+        {
+          "rows": 5,
+          "cols": 2,
+          "has_header": true,
+          "col_headers": [
+            "Annual projected volume (nos)",
+            "Annual projected volume (nos)"
+          ],
+          "sample_row_types": [
+            "numeric",
+            "numeric"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "original_task_id": "24d1e93f-9018-45d4-b522-ad89dfd78079",
+    "occupation": "Buyers and Purchasing Agents",
+    "sector": "Manufacturing",
+    "original_ref_file": "reference_files/787218a67c75e5c2f6dc405027a2f07c/Quotations and volume projection for model I headlamp.docx",
+    "file_type": "docx",
+    "variant_idx": 1,
+    "diversity_spec": {
+      "doc_type": "policy or procedure reference \u2014 rules with applicability conditions and exception tables",
+      "content_generation_need": "narrative synthesis \u2014 model must turn tabular data into cohesive prose paragraphs",
+      "structural_complexity": "moderate: 2-3 tables with section headings and cross-references between them",
+      "domain": "pharmaceutical and medical devices"
+    },
+    "pool_c_file": "data/pool_c/24d1e93f_docx_v1.docx",
+    "schema": {
+      "file_type": "docx",
+      "paragraph_count": 10,
+      "table_count": 4,
+      "paragraph_structure": [
+        {
+          "style": "Normal",
+          "word_count": 5,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 7,
+          "has_numbers": false
+        },
+        {
+          "style": "List Paragraph",
+          "word_count": 1,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 3,
+          "has_numbers": false
+        },
+        {
+          "style": "List Paragraph",
+          "word_count": 1,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 3,
+          "has_numbers": false
+        },
+        {
+          "style": "List Paragraph",
+          "word_count": 1,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 3,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 9,
+          "has_numbers": false
+        },
+        {
+          "style": "Normal",
+          "word_count": 15,
+          "has_numbers": true
+        }
+      ],
+      "tables": [
+        {
+          "rows": 5,
+          "cols": 3,
+          "has_header": true,
+          "col_headers": [
+            "Part price (Top variant)",
+            "7,286.00",
+            "INR"
+          ],
+          "sample_row_types": [
+            "text",
+            "numeric",
+            "text"
+          ]
+        },
+        {
+          "rows": 5,
+          "cols": 3,
+          "has_header": true,
+          "col_headers": [
+            "Part price (Top variant)",
+            "5,834.00",
+            "INR"
+          ],
+          "sample_row_types": [
+            "text",
+            "numeric",
+            "text"
+          ]
+        },
+        {
+          "rows": 7,
+          "cols": 3,
+          "has_header": true,
+          "col_headers": [
+            "Part price (for quantity < 100000)(Top variant)",
+            "6,347.00",
+            "INR"
+          ],
+          "sample_row_types": [
+            "numeric",
+            "numeric",
+            "text"
+          ]
+        },
+        {
+          "rows": 5,
+          "cols": 2,
+          "has_header": true,
+          "col_headers": [
+            "Annual projected volume (nos)",
+            "Annual projected volume (nos)"
+          ],
+          "sample_row_types": [
+            "numeric",
+            "numeric"
+          ]
+        }
+      ]
+    }
+  }
+]
