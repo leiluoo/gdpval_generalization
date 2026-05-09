@@ -43,14 +43,20 @@ def collect(output_root: Path, copy_to: Path | None) -> list:
         if key in done_keys:
             continue
 
-        # Sandbox uploads workspace contents directly into output_folder/
-        # Try a few common layouts the framework might use
-        candidates = [
-            output_root / entry["output_folder"] / entry["expected_output"],
-            output_root / entry["output_folder"] / "workspace" / entry["expected_output"],
+        # Claude names the file itself — scan for any file of the right extension.
+        # Try both direct layout and workspace/ subdirectory.
+        ext = entry["file_type"]
+        search_dirs = [
+            output_root / entry["output_folder"],
+            output_root / entry["output_folder"] / "workspace",
         ]
-
-        found = next((p for p in candidates if p.exists()), None)
+        found = None
+        for d in search_dirs:
+            if d.exists():
+                hits = sorted(d.glob(f"*.{ext}"))
+                if hits:
+                    found = hits[0]
+                    break
 
         if found is None:
             missing.append(entry["output_folder"])
@@ -67,7 +73,7 @@ def collect(output_root: Path, copy_to: Path | None) -> list:
             "task_id":            entry["task_id"],
             "occupation":         entry["occupation"],
             "sector":             entry["sector"],
-            "original_ref_file":  entry["original_ref_file"],
+            "original_ref_obs":   entry["original_ref_obs"],
             "file_type":          entry["file_type"],
             "variant_idx":        entry["variant_idx"],
             "diversity_spec":     entry["diversity_spec"],

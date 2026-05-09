@@ -12,7 +12,6 @@ Usage:
 """
 
 import json
-import re
 import argparse
 from pathlib import Path
 
@@ -41,31 +40,15 @@ SKILL_DIR = [
 CONFIGS_DIR.mkdir(parents=True, exist_ok=True)
 
 
-# ── naming helpers ────────────────────────────────────────────────────────────
-
 def obs_path(task: dict) -> str:
     """Construct OBS path from task's reference_files field."""
     rel = task["reference_files"][0]   # e.g. "reference_files/abc123/Population v2.xlsx"
     return OBS_PREFIX + rel
 
 
-def output_filename(task: dict, variant_idx: int) -> str:
-    """
-    Human-readable output filename: <OriginalStem>_v<N>.<ext>
-    e.g. "Population_v2_v0.xlsx"
-    """
-    fname = task["reference_files"][0].split("/")[-1]   # "Population v2.xlsx"
-    if "." in fname:
-        stem, ext = fname.rsplit(".", 1)
-    else:
-        stem, ext = fname, ""
-    safe_stem = re.sub(r"[^\w]", "_", stem).strip("_")  # "Population_v2"
-    return f"{safe_stem}_v{variant_idx}.{ext}" if ext else f"{safe_stem}_v{variant_idx}"
-
-
 # ── query builder ─────────────────────────────────────────────────────────────
 
-def build_query(task: dict, file_type: str, div_spec: dict, out_fname: str) -> str:
+def build_query(task: dict, file_type: str, div_spec: dict) -> str:
     orig_fname = task["reference_files"][0].split("/")[-1]
     constraints = diversity_instruction(div_spec, file_type)
 
@@ -86,10 +69,14 @@ INSTRUCTIONS:
    - Implements the DATA STRUCTURE, COMPUTATION, and TIME DIMENSION constraints
    - Uses completely fictional entity names (companies, people, organisations, places)
    - Has realistic numeric values appropriate for the specified domain
-3. Save the file as `{out_fname}` in the current workspace directory
+3. Choose a descriptive filename that reflects the fictional organisation and data content
+   (e.g. `Meridian_Sales_Pipeline_Q3.xlsx`, `Thornfield_HR_Attrition_2024.docx`).
+   The name must end with `.{file_type}` and contain no spaces.
+   Save the file with that name in the current workspace directory.
 
 RULES:
 - Do NOT copy any actual data values, company names, or metric names from the original file
+- Do NOT reuse the original filename or any part of it in your chosen filename
 - All content must be internally consistent and realistic
 - The output must be a valid, well-formed {file_type.upper()} file
 - If the original has multiple sheets, create the same number of sheets with matching purposes
@@ -116,10 +103,9 @@ def generate_configs(tasks: list, variants: int) -> None:
                 continue
 
             div_spec = build_diversity_spec(file_type, v, task_seed)
-            out_fname = output_filename(task, v)
 
             config = {
-                "query":        build_query(task, file_type, div_spec, out_fname),
+                "query":        build_query(task, file_type, div_spec),
                 "resource_dir": [obs_path(task)],
                 "skill_dir":    SKILL_DIR,
                 "output":       f"synth_file_{config_idx}",
@@ -140,7 +126,6 @@ def generate_configs(tasks: list, variants: int) -> None:
                 "variant_idx":      v,
                 "diversity_spec":   div_spec,
                 "output_folder":    f"synth_file_{config_idx}",
-                "expected_output":  out_fname,
             }
             new_entries.append(entry)
             manifest.append(entry)
