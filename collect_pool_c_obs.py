@@ -14,11 +14,11 @@ The Pipeline A manifest is used only as a lookup table for task metadata.
 Usage:
     python collect_pool_c_obs.py
     python collect_pool_c_obs.py \
-        --obs_root   obs://bucket-pangu-green-guiyang/o00853405/agent/trajs/extracted_trajs \
+        --obs_root   obs://bucket-pangu-green-guiyang/o00853405/agent/trajs/extracted_gdpval_pipeline_a \
+        --obs_output obs://bucket-pangu-green-guiyang/o00853405/agent/trajs/extracted_gdpval_pipeline_b \
         --manifest_a configs/pipeline_a_manifest.json \
         --tasks_json data/single_ref_tasks.json \
         --n_folders  6600 \
-        --output_dir configs/pipeline_b \
         --limit      10
 """
 
@@ -31,12 +31,12 @@ import moxing as mox
 
 # ── constants ─────────────────────────────────────────────────────────────────
 
-DEFAULT_OBS_ROOT   = "obs://bucket-pangu-green-guiyang/o00853405/agent/trajs/extracted_trajs"
-DEFAULT_N_FOLDERS  = 6600
-DEFAULT_OUTPUT_DIR = Path("configs/pipeline_b")
-DEFAULT_MANIFEST_A = Path("configs/pipeline_a_manifest.json")
-DEFAULT_TASKS_JSON = Path("data/single_ref_tasks.json")
-MANIFEST_B_PATH    = Path("configs/pipeline_b_manifest.json")
+DEFAULT_OBS_ROOT      = "obs://bucket-pangu-green-guiyang/o00853405/agent/trajs/extracted_gdpval_pipeline_a"
+DEFAULT_OBS_OUTPUT    = "obs://bucket-pangu-green-guiyang/o00853405/agent/trajs/extracted_gdpval_pipeline_b"
+DEFAULT_N_FOLDERS     = 6600
+DEFAULT_MANIFEST_A    = Path("configs/pipeline_a_manifest.json")
+DEFAULT_TASKS_JSON    = Path("data/single_ref_tasks.json")
+MANIFEST_B_PATH       = Path("configs/pipeline_b_manifest.json")
 
 SUPPORTED_TYPES = {"xlsx", "docx", "pdf"}
 
@@ -175,14 +175,14 @@ def main():
                         help="GDPVal single-ref tasks JSON")
     parser.add_argument("--n_folders",  type=int, default=DEFAULT_N_FOLDERS,
                         help="Total number of synth_file_* folders to scan (0 … N-1)")
-    parser.add_argument("--output_dir", type=Path, default=DEFAULT_OUTPUT_DIR,
-                        help="Local directory to write Pipeline B config JSONs")
+    parser.add_argument("--obs_output", default=DEFAULT_OBS_OUTPUT,
+                        help="OBS prefix to write Pipeline B config JSONs")
     parser.add_argument("--limit",      type=int, default=None,
                         help="Stop after processing this many folders (for testing)")
     args = parser.parse_args()
 
-    obs_root = args.obs_root.rstrip("/")
-    args.output_dir.mkdir(parents=True, exist_ok=True)
+    obs_root   = args.obs_root.rstrip("/")
+    obs_output = args.obs_output.rstrip("/")
     MANIFEST_B_PATH.parent.mkdir(parents=True, exist_ok=True)
 
     # Load Pipeline A manifest as a lookup table: config_idx → entry
@@ -263,8 +263,9 @@ def main():
             "skill_dir":    SKILL_DIR,
             "output":       f"task_gen_{b_idx}",
         }
-        (args.output_dir / f"config_{b_idx}.json").write_text(
-            json.dumps(config_b, indent=2, ensure_ascii=False)
+        mox.file.write(
+            f"{obs_output}/config_{b_idx}.json",
+            json.dumps(config_b, indent=2, ensure_ascii=False),
         )
 
         manifest_b.append({
@@ -309,7 +310,7 @@ def main():
         if len(ambiguous) > 10:
             print(f"    ... and {len(ambiguous) - 10} more")
 
-    print(f"\n  Configs  : {args.output_dir}/")
+    print(f"\n  Configs  : {obs_output}/")
     print(f"  Manifest : {MANIFEST_B_PATH}")
 
 
