@@ -203,8 +203,7 @@ def main():
 
     # Load existing Pipeline B manifest (incremental: skip already-written configs)
     manifest_b = json.loads(MANIFEST_B_PATH.read_text()) if MANIFEST_B_PATH.exists() else []
-    done_synth_ids = {e["synth_file_idx"] for e in manifest_b}
-    b_idx = max((e["config_idx"] for e in manifest_b), default=-1) + 1
+    done_ids = {e["idx"] for e in manifest_b}
 
     n = args.limit if args.limit is not None else args.n_folders
     written = 0
@@ -212,7 +211,7 @@ def main():
     ambiguous = [] # more than one supported file
 
     for i in range(n):
-        if i in done_synth_ids:
+        if i in done_ids:
             continue
 
         # ── find the generated file on OBS ───────────────────────────────────
@@ -249,7 +248,7 @@ def main():
         original_prompt = original.get("prompt", "")[:2000]
         original_rubric = original.get("rubric_pretty", "")[:1500]
 
-        # ── write Pipeline B config ───────────────────────────────────────────
+        # ── write Pipeline B config (index aligned with synth_file index) ─────
         config_b = {
             "query": build_query(
                 pool_c_fname,
@@ -261,25 +260,23 @@ def main():
             ),
             "resource_dir": [obs_file],
             "skill_dir":    SKILL_DIR,
-            "output":       f"task_gen_{b_idx}",
+            "output":       f"task_gen_{i}",
         }
         mox.file.write(
-            f"{obs_output}/config_{b_idx}.json",
+            f"{obs_output}/config_{i}.json",
             json.dumps(config_b, indent=2, ensure_ascii=False),
         )
 
         manifest_b.append({
-            "config_idx":     b_idx,
-            "synth_file_idx": i,
-            "task_id":        task_id,
-            "occupation":     occupation,
-            "file_type":      file_type,
+            "idx":          i,          # aligned with synth_file_{i} and config_{i}
+            "task_id":      task_id,
+            "occupation":   occupation,
+            "file_type":    file_type,
             "diversity_spec": diversity_spec,
-            "pool_c_obs":     obs_file,
-            "output_folder":  f"task_gen_{b_idx}",
+            "pool_c_obs":   obs_file,
+            "output_folder": f"task_gen_{i}",
         })
-        done_synth_ids.add(i)
-        b_idx += 1
+        done_ids.add(i)
         written += 1
 
         if written % 50 == 0:
