@@ -103,9 +103,9 @@ def build_query(
 The reference file for this task is in the `reference_files/` folder: reference_files/{pool_c_fname}
 
 ═══════════════════════════════════════════════════
-ORIGINAL TASK CONTEXT  (style and format reference — do NOT copy content)
+ORIGINAL TASK CONTEXT  (style and difficulty reference — do NOT copy content)
 ═══════════════════════════════════════════════════
-Occupation: {occupation}
+Original occupation (for seniority/specificity reference only): {occupation}
 Expected deliverable types: {deliv_types}
 
 Original prompt (first ~2000 chars):
@@ -119,7 +119,7 @@ Original rubric:
 ---
 
 ═══════════════════════════════════════════════════
-DIVERSITY SPEC  (what makes this variant different from the original)
+DIVERSITY SPEC  (the generated reference file was built to this spec)
 ═══════════════════════════════════════════════════
 {diversity_note}
 
@@ -127,18 +127,22 @@ DIVERSITY SPEC  (what makes this variant different from the original)
 YOUR TASK
 ═══════════════════════════════════════════════════
 1. Read the reference file at reference_files/{pool_c_fname}
-2. Write TWO files in the current workspace:
+2. Determine the appropriate professional occupation for the task by looking at
+   the file's actual content and domain — do NOT default to "{occupation}" if
+   the file's subject matter belongs to a different field.
+3. Write TWO files in the current workspace:
 
    task.txt
    --------
    A complete, self-contained professional task prompt that:
-   • Establishes a clear role for the occupation: {occupation}
+   • Opens with "You are a [X]." where [X] is the occupation that naturally
+     works with the content of the reference file
    • Is grounded in the ACTUAL content of the reference file
      (reference specific column names, sheet names, entity names, and numeric values)
    • Asks for the same TYPE of deliverable as the original: {deliv_types}
    • Includes all constraints needed to produce and evaluate the deliverable
      (exact output filenames, sheet names, column names, required calculations, formats)
-   • Follows the same level of specificity and professional tone as the original
+   • Matches the same level of specificity and professional tone as the original
    • Is completable using only the reference file and the instructions in task.txt
 
    rubric.txt
